@@ -1,0 +1,83 @@
+<html>
+<head>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+
+    <style>
+        input.form-control {
+            position:relative;
+            padding-right:30px;
+        }
+        .form-group .validation-icon {
+            position:absolute;
+            padding:5px;
+            font-size: 1.3em;
+            bottom:18px;
+            right:18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-8 col-xs-offset-2">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <h1>Validation Demo</h1>
+                    </div>
+                    <form action="">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label for="">String</label>
+                                <input type="text" class="form-control validate" data-pattern="required|string">
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label for="">Number</label>
+                                <input type="text" class="form-control validate" data-pattern="required|numeric">
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label for="">Phone</label>
+                                <input type="text" class="form-control validate" data-pattern="required|phone">
+                            </div>
+                        </div>
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <label for="">Email</label>
+                                <input type="text" class="form-control validate" data-pattern="required|email">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../bower_components/jquery/dist/jquery.js"></script>
+<script src="../bower_components/underscore/underscore.js"></script>
+<script src="sentry.js"></script>
+
+<script>
+    $('input.validate').on('blur', function(e) {
+        var $sicon = $('<div class="validation-icon label label-success"><i class="fa fa-check-circle-o"></i></div>'),
+            $ficon =  $('<div class="validation-icon label label-danger"><i class="fa fa-times-circle-o"></i></div>');
+
+        var $this = $(this);
+        if (Sentry.isValid($this.data('pattern'), $this.val())) {
+            var $p = $($this.parents('.form-group'));
+            $p.append($sicon).removeClass('has-error').addClass('has-success');
+        } else {
+            var $p = $($this.parents('.form-group'));
+            $p.append($ficon).removeClass('has-success').addClass('has-error');
+        }
+    });
+</script>
+</body>
+</html>
