@@ -1,0 +1,22 @@
+{
+  "name": "sentry",
+  "version": "0.0.0",
+  "description": "Lightweight javascript validation library",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EvanHammond/sentry.git"
+  },
+  "author": "Evan Hammond <evan.hammond@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/EvanHammond/sentry/issues"
+  },
+  "homepage": "https://github.com/EvanHammond/sentry#readme",
+  "dependencies": {
+    "lodash": "^3.10.1"
+  }
+}
